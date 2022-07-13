@@ -21,6 +21,15 @@ pipeline {
             }
         }
         
+        
+        stage('aws code build') {
+            steps {
+                script 
+                {
+                     awscodebuild.awscodebuild()
+                }
+            }
+        }
     }
     
 }
