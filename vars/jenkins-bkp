@@ -7,7 +7,7 @@ pipeline {
         
         stage('pull code from github repo') {
             steps {
-                git credentialsId: 'first', url: 'git@github.com:Shankardevops1/java-hello-world-with-maven.git'
+                git credentialsId: 'first', url: 'git@github.com:Shankardevops1/sparkjava-war-example.git'
             }
         }
         
