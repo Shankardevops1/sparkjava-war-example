@@ -14,20 +14,23 @@ pipeline {
         
         stage('Checkout code from Git') {
             steps {
-                script 
-                {
-                    checkout_git.checkout_git()
-                }
+                
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven")}}},
+                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example")}}}
+                )
+                
             }
         }
         
         
         stage('aws code build') {
             steps {
-                script 
-                {
-                     awscodebuild.awscodebuild()
-                }
+                 
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild(" java-project-2")}}},
+                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4")}}}
+                )
             }
         }
     }
