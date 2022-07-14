@@ -28,7 +28,7 @@ pipeline {
             steps {
                  
                      parallel (
-                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild(" java-project-2")}}},
+                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2")}}},
                 "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4")}}}
                 )
             }
