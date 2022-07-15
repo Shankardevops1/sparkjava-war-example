@@ -7,18 +7,23 @@ pipeline {
          stage('Checkout code from Git') {
             steps {  
 
-                dir("tag_code1") {                              
-                                         
-                script {checkout_git.checkout_git("java-hello-world-with-maven", "master")}                
-                }
+                
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven")}}},
+                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example")}}}
+                )
             }
         }
 
         stage('create tag on git repo') {
-            steps {                                
-                 dir("tag_code1") {                        
-                script {create_tag.create_tag("${tag}")}                
-                 }
+            steps { 
+
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {create_tag.create_tag("${tag}")}}},
+                "2": {dir("sparkjava-war-example"){script {create_tag.create_tag("${tag}")}}}
+                )
+
+
             }
         }
                                        
