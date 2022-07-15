@@ -7,16 +7,16 @@ pipeline {
          stage('Checkout code from Git') {
             steps {  
 
-                dir("tag_code") {                              
+                dir("tag_code1") {                              
                                          
-                script {checkout_git.checkout_git("sparkjava-war-example", "master")}                
+                script {checkout_git.checkout_git("java-hello-world-with-maven", "master")}                
                 }
             }
         }
 
         stage('create tag on git repo') {
             steps {                                
-                 dir("tag_code") {                        
+                 dir("tag_code1") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
             }
