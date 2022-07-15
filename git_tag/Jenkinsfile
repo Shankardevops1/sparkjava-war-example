@@ -33,8 +33,8 @@ pipeline {
 
                 
                      parallel (
-                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-hello-world-with-maven")}}},
-                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("sparkjava-war-example")}}}
+                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2")}}},
+                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4")}}}
                 )
            
                
