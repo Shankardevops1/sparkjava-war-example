@@ -1,36 +1,28 @@
-@Library('myLibrary') _
+ @Library('myLibrary') _
 pipeline {
     agent any
     
     stages {
         
          stage('Checkout code from Git') {
-            steps {     
-                    
-                 dir("tag_code1")
-                {
-                    script 
+            steps {  
 
-                     {checkout_git.checkout_git("sparkjava-war-example")}}
-                
-            } 
-        
-
-
-
+                dir("tag_code") {                              
+                                         
+                script {checkout_git.checkout_git("sparkjava-war-example", "master")}                
+                }
+            }
         }
 
         stage('create tag on git repo') {
-            steps { 
-                
-                dir("tag_code1") {                        
+            steps {                                
+                 dir("tag_code") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
-            
             }
         }
                                        
         
     }
- 
+
 }
