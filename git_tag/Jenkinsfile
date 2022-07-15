@@ -21,7 +21,7 @@ pipeline {
             steps {  parallel(                              
                  dir("java-hello-world-with-maven") {                        
                 script {create_tag.create_tag("${tag}")}                
-                 }
+                 },
                   dir("sparkjava-war-example") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
