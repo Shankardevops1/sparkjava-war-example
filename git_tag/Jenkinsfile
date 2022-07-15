@@ -7,12 +7,12 @@ pipeline {
          stage('Checkout code from Git') {
             steps {   parallel(
 
-                dir("tag_code1") {                              
+              "1"  dir("tag_code1") {                              
                                          
                 script {checkout_git.checkout_git("sparkjava-war-example", "master")}                
                 }
 
-                dir("tag_code2") {                              
+               "2" dir("tag_code2") {                              
                                          
                 script {checkout_git.checkout_git("java-hello-world-with-maven", "master")}                
                 }
