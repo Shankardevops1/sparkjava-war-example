@@ -5,20 +5,34 @@ pipeline {
     stages {
         
          stage('Checkout code from Git') {
-            steps {  
+            steps {   parallel(
 
-                dir("tag_code") {                              
+                dir("tag_code1") {                              
                                          
                 script {checkout_git.checkout_git("sparkjava-war-example", "master")}                
                 }
-            }
+
+                dir("tag_code2") {                              
+                                         
+                script {checkout_git.checkout_git("java-hello-world-with-maven", "master")}                
+                }
+            )
+            } 
+        
+
+
+
         }
 
         stage('create tag on git repo') {
-            steps {                                
-                 dir("tag_code") {                        
+            steps {  parallel(                              
+                 dir("tag_code1") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
+                  dir("tag_code2") {                        
+                script {create_tag.create_tag("${tag}")}                
+                 }
+            )  
             }
         }
                                        
