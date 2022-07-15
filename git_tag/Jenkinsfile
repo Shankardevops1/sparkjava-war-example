@@ -18,13 +18,16 @@ pipeline {
         }
 
         stage('create tag on git repo') {
-            steps {  parallel(                              
-                 dir("java-hello-world-with-maven") {                        
+            steps { 
+                
+                 parallel(                              
+            "1": 
+            {dir("java-hello-world-with-maven") {                        
                 script {create_tag.create_tag("${tag}")}                
-                 },
-                  dir("sparkjava-war-example") {                        
+                 }},
+            "2": {dir("sparkjava-war-example") {                        
                 script {create_tag.create_tag("${tag}")}                
-                 }
+                 }}
             )  
             }
         }
