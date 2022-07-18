@@ -17,7 +17,8 @@ pipeline {
                 
                      parallel (
                 "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven")}}},
-                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example")}}}
+                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example")}}},
+                "3": {dir("hello-world"){script {checkout_git.checkout_git("hello-world")}}}
                 )
                 
             }
@@ -29,7 +30,8 @@ pipeline {
                  
                      parallel (
                 "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2")}}},
-                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4")}}}
+                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4")}}},
+                "3": {dir("hello-world"){script {awscodebuild.awscodebuild("java-project-6")}}}
                 )
             }
         }
