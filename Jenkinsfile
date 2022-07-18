@@ -29,9 +29,9 @@ pipeline {
             steps {
                  
                      parallel (
-                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2")}}},
-                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4")}}},
-                "3": {dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-5")}}}
+                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2", "${tag}")}}},
+                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4", "${tag}")}}},
+                "3": {dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-5", "${tag}")}}}
                 )
             }
         } 
