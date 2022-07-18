@@ -16,9 +16,9 @@ pipeline {
             steps {
                 
                      parallel (
-                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven")}}},
-                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example")}}},
-                "3": {dir("hello-world-war"){script {checkout_git.checkout_git("hello-world-war")}}}
+                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven","master")}}},
+                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}},
+                "3": {dir("hello-world-war"){script {checkout_git.checkout_git("hello-world-war","master")}}}
                 )
                 
             }
