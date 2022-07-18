@@ -34,7 +34,7 @@ pipeline {
                 "3": {dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-5")}}}
                 )
             }
-        } hh
+        } 
     }
     
 }
